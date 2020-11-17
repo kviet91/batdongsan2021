@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
 use Illuminate\Http\Request;
 
 class NhadatbanController extends Controller
 {
     //
     public function index() {
-        return view('pages.nhadatban.index');
+        $posts = product::limit(10)->get();
+        return view("pages.nhadatban.index", compact('posts'));
     }
 
     public function ban_can_ho_chung_cu() {
@@ -49,5 +51,9 @@ class NhadatbanController extends Controller
 
     public function bien_hoa_city() {
     return view('pages.nhadatban.single_post.bien_hoa_city');
+    }
+
+    public function posts_index() {
+        
     }
 }
